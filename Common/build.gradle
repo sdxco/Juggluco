@@ -97,7 +97,13 @@ android {
 
     //    buildConfigField 'int', 'noZXing', '1'
         //compileSdk 36
-        applicationId "tk.glucodata"
+        // SeanDexCo: distinct install identity so this app coexists with an
+        // existing Juggluco install rather than colliding with it (different
+        // signing key would otherwise make installation impossible without
+        // uninstalling working software first). The code namespace stays
+        // tk.glucodata -- changing that would break every import and the JNI
+        // symbol names in libg.so.
+        applicationId "co.seandex.collector"
 
          versionName '10.9.8'
 //    multiDexEnabled true
