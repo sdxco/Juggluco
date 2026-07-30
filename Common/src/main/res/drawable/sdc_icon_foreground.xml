@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SeanDexCo adaptive-icon foreground.
+
+  A glucose trace rising out of a droplet: the two ideas the app is about,
+  in one mark. Drawn inside the 66dp safe zone (centred in 108dp) so the
+  launcher can mask it to any shape without clipping.
+
+  Green stroke = in-range, the state you want to see. Deliberately the same
+  green the status screen uses for in-range readings, so the icon and the UI
+  speak one language.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- droplet, hollow so it reads as a container not a blob -->
+    <path
+        android:pathData="M54,26 C54,26 40,44 40,54 a14,14 0 0 0 28,0 C68,44 54,26 54,26 Z"
+        android:strokeColor="#FF7FD1A6"
+        android:strokeWidth="3.4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- glucose trace: falls, steadies, rises -->
+    <path
+        android:pathData="M28,74 L38,74 L44,82 L52,64 L60,78 L68,71 L80,71"
+        android:strokeColor="#FF7FD1A6"
+        android:strokeWidth="4.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- current-value dot at the trace head -->
+    <path
+        android:pathData="M80,71 m-3.6,0 a3.6,3.6 0 1,0 7.2,0 a3.6,3.6 0 1,0 -7.2,0"
+        android:fillColor="#FFEAF6F0" />
+</vector>

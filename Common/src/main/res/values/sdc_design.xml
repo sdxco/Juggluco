@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SeanDexCo design tokens.
+
+  Principles, in priority order:
+
+  1. READ AT 3AM. Dark surfaces, large numerals, no glare. Nothing decorative
+     competes with the number.
+  2. COLOUR MEANS STATE, NEVER DECORATION. Green/amber/red carry information
+     about glucose and freshness; nothing else is coloured.
+  3. STALENESS IS AS LOUD AS A BAD READING. A number with no age is a lie.
+     Stale data uses the same alarm red as a low, because a stale reading is
+     exactly as dangerous as an unseen one.
+  4. ONE PALETTE, TWO SCREEN SIZES. Phone and watch share these tokens so the
+     two apps are recognisably one product.
+
+  Contrast: every foreground token below clears 4.5:1 against sdc_bg, and the
+  primary value clears 7:1, because it is the one thing that must be legible
+  at a glance in bad conditions.
+-->
+<resources>
+
+    <!-- surfaces -->
+    <color name="sdc_bg">#FF0E1218</color>
+    <color name="sdc_surface">#FF1B2430</color>
+    <color name="sdc_surface_raised">#FF243040</color>
+    <color name="sdc_divider">#FF2E3A4A</color>
+
+    <!-- text -->
+    <color name="sdc_text">#FFEAF0F6</color>
+    <color name="sdc_text_dim">#FFA3B1C2</color>
+    <color name="sdc_text_faint">#FF6B7A8C</color>
+
+    <!-- glucose state -->
+    <color name="sdc_in_range">#FF7FD1A6</color>
+    <color name="sdc_high">#FFE8C46A</color>
+    <color name="sdc_urgent_high">#FFE89B5A</color>
+    <color name="sdc_low">#FFE86A6A</color>
+    <color name="sdc_urgent_low">#FFFF4D4D</color>
+
+    <!-- freshness / connection state -->
+    <color name="sdc_fresh">#FF7FD1A6</color>
+    <color name="sdc_ageing">#FFE8C46A</color>
+    <color name="sdc_stale">#FFFF4D4D</color>
+
+    <!-- type scale: the value dominates, everything else recedes -->
+    <dimen name="sdc_value_phone">96sp</dimen>
+    <dimen name="sdc_value_watch">54sp</dimen>
+    <dimen name="sdc_trend_phone">40sp</dimen>
+    <dimen name="sdc_trend_watch">24sp</dimen>
+    <dimen name="sdc_age_phone">17sp</dimen>
+    <dimen name="sdc_age_watch">13sp</dimen>
+    <dimen name="sdc_label">13sp</dimen>
+    <dimen name="sdc_body">15sp</dimen>
+
+    <!-- spacing on a 4dp grid -->
+    <dimen name="sdc_gap_xs">4dp</dimen>
+    <dimen name="sdc_gap_s">8dp</dimen>
+    <dimen name="sdc_gap_m">16dp</dimen>
+    <dimen name="sdc_gap_l">24dp</dimen>
+    <dimen name="sdc_gap_xl">32dp</dimen>
+
+    <!-- touch targets: 48dp minimum, non-negotiable -->
+    <dimen name="sdc_touch_min">48dp</dimen>
+    <dimen name="sdc_radius">14dp</dimen>
+
+</resources>

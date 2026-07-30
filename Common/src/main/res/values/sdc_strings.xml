@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SeanDexCo user-facing strings.
+
+  Writing rules:
+  - Say the state, then the fix. Never a dead end.
+  - No jargon the wearer's parent would have to look up.
+  - Never imply monitoring is active when it isn't.
+-->
+<resources>
+
+    <!-- status screen -->
+    <string name="sdc_no_data">No glucose data</string>
+    <string name="sdc_no_sensor">No sensor connected</string>
+    <string name="sdc_age_now">just now</string>
+    <string name="sdc_age_seconds">%1$d sec ago</string>
+    <string name="sdc_age_minutes">%1$d min ago</string>
+    <string name="sdc_age_hours">%1$d hr ago</string>
+    <string name="sdc_stale_warning">Data is stale — not monitoring</string>
+
+    <!-- who is collecting -->
+    <string name="sdc_collector">Collector</string>
+    <string name="sdc_collector_phone">Phone</string>
+    <string name="sdc_collector_watch">Watch</string>
+    <string name="sdc_collector_none">None</string>
+
+    <!-- setup flow -->
+    <string name="sdc_setup_title">Set up sensor</string>
+    <string name="sdc_step_scan">Scan the sensor</string>
+    <string name="sdc_step_scan_help">Photograph the data matrix on the applicator. Do this before inserting it — it is the only way to reconnect later.</string>
+    <string name="sdc_step_confirm">Confirm a reading</string>
+    <string name="sdc_step_handover">Hand over to watch</string>
+    <string name="sdc_step_verify">Verify the watch is collecting</string>
+    <string name="sdc_waiting_window">Waiting for sensor… %1$s</string>
+    <string name="sdc_accept_on_watch">Accept the pairing request ON YOUR WATCH</string>
+    <string name="sdc_swipe_up_hint">Swipe up on the watch face to find it</string>
+
+    <!-- diagnostics -->
+    <string name="sdc_diagnostics">Diagnostics</string>
+    <string name="sdc_diag_scanning">Searching for sensor</string>
+    <string name="sdc_diag_bonded">Paired with sensor</string>
+    <string name="sdc_diag_last_attempt">Last attempt</string>
+    <string name="sdc_diag_last_error">Last error</string>
+    <string name="sdc_diag_bluetooth">Bluetooth</string>
+    <string name="sdc_diag_none">none</string>
+    <string name="sdc_yes">Yes</string>
+    <string name="sdc_no">No</string>
+
+    <!-- warnings that must never be softened -->
+    <string name="sdc_warn_one_app">Only one app can use the sensor. Close the others.</string>
+    <string name="sdc_warn_no_reinstall">Do not reinstall while a sensor is running — it erases the session.</string>
+
+</resources>

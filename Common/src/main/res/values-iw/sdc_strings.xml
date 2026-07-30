@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SeanDexCo — עברית
+
+  Note on the directory name: Android resolves Hebrew under the legacy "iw"
+  code, which is why MainActivity already calls setDirection(new Locale("iw")).
+  An identical copy lives in values-he for newer resolution paths.
+
+  RTL is already enabled app-wide (android:supportsRtl="true"), so layouts
+  mirror automatically. Glucose numerals stay LTR — digits read left-to-right
+  even in Hebrew text, and mg/dL is a unit, not a word to translate.
+-->
+<resources>
+
+    <!-- מסך מצב -->
+    <string name="sdc_no_data">אין נתוני גלוקוז</string>
+    <string name="sdc_no_sensor">אין חיבור לחיישן</string>
+    <string name="sdc_age_now">כרגע</string>
+    <string name="sdc_age_seconds">לפני %1$d שניות</string>
+    <string name="sdc_age_minutes">לפני %1$d דקות</string>
+    <string name="sdc_age_hours">לפני %1$d שעות</string>
+    <string name="sdc_stale_warning">הנתונים לא מעודכנים — אין ניטור</string>
+
+    <!-- מי אוסף את הנתונים -->
+    <string name="sdc_collector">אוסף נתונים</string>
+    <string name="sdc_collector_phone">טלפון</string>
+    <string name="sdc_collector_watch">שעון</string>
+    <string name="sdc_collector_none">אין</string>
+
+    <!-- תהליך ההגדרה -->
+    <string name="sdc_setup_title">הגדרת חיישן</string>
+    <string name="sdc_step_scan">סריקת החיישן</string>
+    <string name="sdc_step_scan_help">צלמו את הברקוד שעל המחדיר לפני ההחדרה — זו הדרך היחידה להתחבר מחדש בהמשך.</string>
+    <string name="sdc_step_confirm">אישור קריאה</string>
+    <string name="sdc_step_handover">העברה לשעון</string>
+    <string name="sdc_step_verify">בדיקה שהשעון אוסף נתונים</string>
+    <string name="sdc_waiting_window">ממתין לחיישן… %1$s</string>
+    <string name="sdc_accept_on_watch">אשרו את בקשת ההתאמה בשעון</string>
+    <string name="sdc_swipe_up_hint">החליקו למעלה על מסך השעון כדי למצוא אותה</string>
+
+    <!-- אבחון -->
+    <string name="sdc_diagnostics">אבחון</string>
+    <string name="sdc_diag_scanning">מחפש חיישן</string>
+    <string name="sdc_diag_bonded">מותאם לחיישן</string>
+    <string name="sdc_diag_last_attempt">ניסיון אחרון</string>
+    <string name="sdc_diag_last_error">שגיאה אחרונה</string>
+    <string name="sdc_diag_bluetooth">בלוטות׳</string>
+    <string name="sdc_diag_none">אין</string>
+    <string name="sdc_yes">כן</string>
+    <string name="sdc_no">לא</string>
+
+    <!-- אזהרות שאסור לרכך -->
+    <string name="sdc_warn_one_app">רק אפליקציה אחת יכולה להתחבר לחיישן. סגרו את האחרות.</string>
+    <string name="sdc_warn_no_reinstall">אין להתקין מחדש בזמן שחיישן פעיל — הפעולה מוחקת את החיבור.</string>
+
+    <!-- מסך בחירת אוסף הנתונים -->
+    <string name="sdc_need_usebluetooth">לא ניתן לבחור אוסף נתונים: הפעילו קודם &quot;השתמש בבלוטות׳&quot; עבור החיישן, ואז פתחו מסך זה מחדש.</string>
+    <string name="sdc_no_watch">לא נמצא שעון. פתחו את SeanDexCo בשעון, חברו את שני המכשירים לאותה רשת Wi-Fi, ואז פתחו מסך זה מחדש.</string>
+    <string name="sdc_ready_watch">נמצא שעון. בחרו &quot;שעון&quot; כדי שהשעון יאסוף נתונים ישירות מהחיישן.</string>
+
+</resources>
