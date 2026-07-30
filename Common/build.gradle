@@ -632,6 +632,9 @@ allprojects {
 }
 
 configurations {
+    // SeanDexCo: our G7-only phone variant needs its own configuration so the
+    // barcode-scanner dependencies can be attached to it.
+    mobileLibreOldSiDexNogoogleImplementation {}
     mobileLibre3SiDexGoogleImplementation {}
     mobileLibre3SiDexNogoogleImplementation {}
     mobileLibreOldSiDexImplementation {}
@@ -729,5 +732,11 @@ implementation "androidx.appcompat:appcompat:1.6.1"
 
     mobileLibreOldSiDexImplementation 'com.google.android.gms:play-services-code-scanner:16.1.0'
 
+    // SeanDexCo: barcode-scanner stack for the G7-only phone variant, mirroring
+    // exactly what mobileLibre3SiDexNogoogle receives. The G7 applicator's data
+    // matrix is scanned with this, and it is the only way to create a session.
+    mobileLibreOldSiDexNogoogleImplementation 'com.google.android.gms:play-services-code-scanner:16.1.0'
+    mobileLibreOldSiDexNogoogleImplementation 'com.google.zxing:core:3.5.4'
+    mobileLibreOldSiDexNogoogleImplementation 'com.journeyapps:zxing-android-embedded:4.3.0'
 }
 
