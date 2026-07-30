@@ -31,6 +31,20 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      # The build declares NDK 30.0.14904198 and CMake; the runner has the SDK
+      # but the NDK licence is unaccepted and that exact NDK is absent.
+      - name: Accept SDK licences and install NDK
+        run: |
+          set -eu
+          SDK="$ANDROID_SDK_ROOT"
+          echo "SDK=$SDK"
+          yes | "$SDK"/cmdline-tools/latest/bin/sdkmanager --licenses >/dev/null 2>&1 || true
+          "$SDK"/cmdline-tools/latest/bin/sdkmanager --install "ndk;30.0.14904198" "cmake;3.22.1" 2>&1 | tail -5
+          ls "$SDK"/ndk || true
+
+      - name: Remove stale local.properties (points at author's machine)
+        run: rm -f local.properties
+
       - name: Show candidate assemble tasks
         continue-on-error: true
         run: ./gradlew :Common:tasks --all 2>&1 | grep -iE "assemble.*(Wear|Mobile).*Dex" | head -40
