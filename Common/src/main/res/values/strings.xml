@@ -3,6 +3,13 @@
     <string name="languagename">Language</string>
     <string name="app_name">SeanDexCo</string>
 
+    <!-- SeanDexCo: explain WHY the phone/watch collector choice is unavailable.
+         Upstream disabled these controls silently, which is impossible to
+         diagnose from the UI. -->
+    <string name="sdc_need_usebluetooth">Cannot choose a collector yet: turn on &quot;Use Bluetooth&quot; for the sensor first, then reopen this screen.</string>
+    <string name="sdc_no_watch">No watch found. Open SeanDexCo on the watch, put both devices on the same Wi-Fi, then reopen this screen.</string>
+    <string name="sdc_ready_watch">Watch found. Choose Watch to let it collect directly from the sensor.</string>
+
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
 

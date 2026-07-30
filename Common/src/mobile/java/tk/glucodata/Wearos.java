@@ -36,6 +36,7 @@ import static tk.glucodata.util.getradiobutton;
 import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.TextView;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -88,10 +89,20 @@ static Spinner mkspinner(MainActivity context, ArrayList<Node> nodeslist,IntCons
 
 
 static void remake(CheckDirectionRadio[] sensordirect, CheckDirectionRadio[] nswitch,  Node node,boolean[] direct) {
+    remake(sensordirect,nswitch,node,direct,null);
+    }
+
+/* SeanDexCo: same as above but reports WHY the collector choice is
+   unavailable into `reason`. Upstream just called setEnabled(false), which
+   leaves the user staring at dead controls with no way to find out that
+   "Use Bluetooth" is off or that no watch node was discovered. */
+static void remake(CheckDirectionRadio[] sensordirect, CheckDirectionRadio[] nswitch,  Node node,boolean[] direct,TextView reason) {
     int dirval,numsval;
+    int reasonres=0;
     if(node==null) {
         dirval=-1;
         numsval=-1;
+        reasonres=R.string.sdc_no_watch;
         if(doLog)
             Log.i(LOG_ID,"remake node=null");
         }
@@ -102,9 +113,20 @@ static void remake(CheckDirectionRadio[] sensordirect, CheckDirectionRadio[] nsw
         if(dirval==0&&!Natives.getusebluetooth()) {
             dirval=-1;
             numsval=-1;
+            reasonres=R.string.sdc_need_usebluetooth;
             }
+        else if(dirval>=0)
+            reasonres=R.string.sdc_ready_watch;
         if(doLog)
-            Log.i(LOG_ID,"remake node="+name);
+            Log.i(LOG_ID,"remake node="+name+" dirval="+dirval);
+        }
+    if(reason!=null) {
+        if(reasonres==0)
+            reason.setVisibility(GONE);
+        else {
+            reason.setText(reasonres);
+            reason.setVisibility(View.VISIBLE);
+            }
         }
     if(dirval<0)  {
         for(var v:sensordirect) {
@@ -178,12 +200,15 @@ static public void show(MainActivity context,View parent) {
        }
    final var nodeslist=nodeslistin;
    boolean[] watchsensor={false};
+   // SeanDexCo: surfaces the reason the collector choice is (un)available.
+   var reason=getlabel(context,"");
+   reason.setVisibility(GONE);
    IntConsumer setpos= pos-> {
             try {
                 nodenumptr[0]=pos;
                 if(nodeslist!=null&&nodeslist.size()>pos) {
                     Node node=pos<0?null:nodeslist.get(pos);
-                    remake(sswitch, nswitch,   node,watchsensor);
+                    remake(sswitch, nswitch,   node,watchsensor,reason);
                     defaults.setEnabled(true);
                     if(node!=null) {  
                        Consumer<View> switched= v-> {
@@ -226,7 +251,7 @@ static public void show(MainActivity context,View parent) {
             l.setY((height-h)/2);
             */
         return new int[] {w,h};
-        }, new View[]{spin},new View[]{enternums,nphone,nwatch},new View[]{direct,sphone,swatch,connection},new View[]{Help,defaults,Ok} );
+        }, new View[]{spin},new View[]{enternums,nphone,nwatch},new View[]{direct,sphone,swatch,connection},new View[]{reason},new View[]{Help,defaults,Ok} );
     int laypad=(int)(density*4.0);
     layout.setPadding(laypad*2,laypad*2,laypad*2,laypad);
 
