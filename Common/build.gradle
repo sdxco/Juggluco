@@ -566,6 +566,15 @@ buildTypes {
                res.srcDirs= ['src/mobileNosi/res']
            }
 
+           // SeanDexCo: G7-only wear build. Upstream only registered wearSi
+           // sources for the Libre3 combinations, so our LibreOld variant
+           // compiled without PhotoScan/ZXing/Si*GattCallback and failed.
+           // PhotoScan is the shared data-matrix scanner used for the G7
+           // applicator, so wearSi is required even for a Dexcom-only build.
+           wearLibreOldSiDexNogoogle{
+               java.srcDirs = ['src/wearSi/java']
+               jniLibs.srcDirs = [ 'src/wearSi/jniLibs']
+           }
            wearLibre3SiDexNogoogle{
                java.srcDirs = ['src/wearSi/java']
                jniLibs.srcDirs = [ 'src/wearSi/jniLibs']
