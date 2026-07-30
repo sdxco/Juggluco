@@ -49,9 +49,13 @@ jobs:
         continue-on-error: true
         run: ./gradlew :Common:tasks --all 2>&1 | grep -iE "assemble.*(Wear|Mobile).*Dex" | head -40
 
+      - name: Confirm the new Dexcom-only variant is now offered
+        continue-on-error: true
+        run: ./gradlew :Common:tasks --all 2>&1 | grep -iE "assemble(Wear|Mobile)LibreOldNosiDex" | head -20
+
       - name: Build Wear + LibreOld + NoSi + Dex + NoGoogle (release)
         continue-on-error: true
-        run: ./gradlew :Common:assembleWearLibreOldNosiDexNogoogleRelease --no-daemon --stacktrace
+        run: ./gradlew :Common:assembleWearLibreOldNosiDexNogoogleRelease --no-daemon --stacktrace 2>&1 | tail -60
 
       - name: Locate any APKs produced
         continue-on-error: true
