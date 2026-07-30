@@ -1,0 +1,52 @@
+name: SeanDexCo build probe
+
+# Goal of this workflow: find out whether a Dexcom-only build of Juggluco
+# compiles WITHOUT the proprietary Libre/Sibionics .so blobs.
+#
+# Reasoning: the only System.loadLibrary() call in the Java sources is
+# libg.so, which CMake builds from the open C++ tree. The blobs listed in
+# README are consumed by the libre3 / mobileSi flavors. Selecting
+# libreOld + nosi + dex should therefore need no blobs at all.
+#
+# We build the WEAR variant first, because a watch-side collector is the
+# whole point of the SeanDexCo project.
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - ".github/workflows/seandexco-build.yml"
+      - "Common/**"
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Show candidate assemble tasks
+        continue-on-error: true
+        run: ./gradlew :Common:tasks --all 2>&1 | grep -iE "assemble.*(Wear|Mobile).*Dex" | head -40
+
+      - name: Build Wear + LibreOld + NoSi + Dex + NoGoogle (release)
+        continue-on-error: true
+        run: ./gradlew :Common:assembleWearLibreOldNosiDexNogoogleRelease --no-daemon --stacktrace
+
+      - name: Locate any APKs produced
+        continue-on-error: true
+        run: find . -name "*.apk" -newermt "-30 minutes" 2>/dev/null | head -20
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: seandexco-juggluco-apk
+          path: |
+            **/build/outputs/apk/**/*.apk
+          if-no-files-found: warn
