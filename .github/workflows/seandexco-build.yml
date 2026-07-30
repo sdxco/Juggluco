@@ -55,7 +55,21 @@ jobs:
 
       - name: Build Wear + LibreOld + NoSi + Dex + NoGoogle (release)
         continue-on-error: true
-        run: ./gradlew :Common:assembleWearLibreOldNosiDexNogoogleRelease --no-daemon --stacktrace 2>&1 | tail -60
+        run: |
+          set +e
+          ./gradlew :Common:assembleWearLibreOldNosiDexNogoogleRelease --no-daemon > build-full.log 2>&1
+          echo "exit=$?"
+          echo "===== compiler errors ====="
+          grep -nE "error:|undefined (reference|symbol)|No such file|fatal error" build-full.log | head -40
+          echo "===== ninja context ====="
+          grep -n -B5 "ninja: build stopped" build-full.log | head -40
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-full-log
+          path: build-full.log
+          if-no-files-found: warn
 
       - name: Locate any APKs produced
         continue-on-error: true
