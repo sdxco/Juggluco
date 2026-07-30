@@ -585,7 +585,7 @@ buildTypes {
             // without Libre3 or Sibionics. Upstream never enabled this combination,
             // but it is the only one relevant to a G7-only collector and it avoids
             // needing the proprietary Libre3/Sibionics .so blobs entirely.
-            if( variant.name.contains("LibreOldNosiNodexGoogle")|| !(variant.name.contains("Libre3SiDex")||variant.name.contains("LibreOldNosiNodex")||variant.name.contains("LibreOldNosiDex"))|| (variant.name.contains("small")&&!variant.name.contains("LibreOldNosiNodexNogoogle")) ||
+            if( variant.name.contains("LibreOldNosiNodexGoogle")|| !(variant.name.contains("Libre3SiDex")||variant.name.contains("LibreOldNosiNodex")||variant.name.contains("LibreOldNosiDex")||variant.name.contains("LibreOldSiDex"))|| (variant.name.contains("small")&&!variant.name.contains("LibreOldNosiNodexNogoogle")) ||
 (variant.name.contains("wear")&&variant.name.contains("LibreOldNosiNodex"))
 
             ) {
