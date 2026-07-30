@@ -60,7 +60,9 @@ jobs:
           # Sibionics ON: aidexx/java.cpp is compiled unconditionally by CMake but
           # its Sensoren members only exist when SIBIONICS=1. The Sibionics blobs
           # live in the mobileSi source set, so a wear build should not need them.
-          ./gradlew :Common:assembleWearLibreOldSiDexNogoogleRelease --no-daemon > build-full.log 2>&1
+          ./gradlew :Common:assembleWearLibreOldSiDexNogoogleRelease \
+                    :Common:assembleMobileLibreOldSiDexNogoogleRelease \
+                    --no-daemon > build-full.log 2>&1
           echo "exit=$?"
           echo "===== compiler errors ====="
           grep -nE "error:|undefined (reference|symbol)|No such file|fatal error" build-full.log | head -40

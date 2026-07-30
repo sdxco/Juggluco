@@ -572,6 +572,18 @@ buildTypes {
                res.srcDirs= ['src/mobileNosi/res']
            }
 
+           // SeanDexCo: phone counterpart of the G7-only build. Same reasoning as
+           // wearLibreOldSiDexNogoogle -- upstream only registered mobileSi
+           // sources for the Libre3 combinations. The phone build needs mobileSi
+           // because that is where the camera / data-matrix scanner lives, which
+           // is the only way to create a Dexcom G7 session.
+           mobileLibreOldSiDexNogoogle {
+               java.srcDirs = ['src/mobileSi/java', 'src/mobileSiNogoogle/java']
+               jniLibs.srcDirs = [ 'src/mobileSi/jniLibs']
+               manifest { srcFile 'src/mobileSi/AndroidManifest.xml' }
+               res.srcDirs= ['src/mobileSi/res', 'src/mobileSiNogoogle/res']
+           }
+
            // SeanDexCo: G7-only wear build. Upstream only registered wearSi
            // sources for the Libre3 combinations, so our LibreOld variant
            // compiled without PhotoScan/ZXing/Si*GattCallback and failed.
